@@ -7,7 +7,7 @@ app.use(express.json());
 
 const logger = (req, res, next) => {
     console.log(`${req.method} ${req.url}`);
-    next(); // move to next middleware/route
+    next();
 };
 
 app.use(logger);
@@ -17,7 +17,7 @@ const auth = (req, res, next) => {
     const { username, password } = req.headers;
 
     if (username === "admin" && password === "1234") {
-        next(); // authorized
+        next();
     } else {
         res.status(401).json({ message: "Unauthorized" });
     }
