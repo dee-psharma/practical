@@ -4,9 +4,7 @@ const app = express();
 const PORT = 3000;
 app.use(express.json());
 
-/* -------------------------------
-   CUSTOM MIDDLEWARE (LOGGER)
---------------------------------*/
+
 const logger = (req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next(); // move to next middleware/route
@@ -14,9 +12,7 @@ const logger = (req, res, next) => {
 
 app.use(logger);
 
-/* -------------------------------
-   BASIC AUTH MIDDLEWARE
---------------------------------*/
+
 const auth = (req, res, next) => {
     const { username, password } = req.headers;
 
